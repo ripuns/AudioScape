@@ -3,6 +3,7 @@ import { createSoundscape } from './api.js'
 import UploadPanel from './components/UploadPanel.jsx'
 import PipelineSteps from './components/PipelineSteps.jsx'
 import SceneResult from './components/SceneResult.jsx'
+import Player from './components/Player.jsx'
 
 export default function App() {
   const [file, setFile] = useState(null)
@@ -48,6 +49,7 @@ export default function App() {
         {error && <div className="error" role="alert">{error}</div>}
       </section>
       {result && <section><SceneResult result={result} imageUrl={resultImage} /></section>}
+      {result && <section><Player key={result.id} result={result} /></section>}
     </div>
   )
 }
