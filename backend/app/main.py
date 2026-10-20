@@ -40,6 +40,7 @@ def create_app(scorer: Scorer | None = None, output_dir: Path | None = None,
     def get_config():
         return {
             "environments": config.ENVIRONMENT_TITLES,
+            "groups": {g: list(keys) for g, keys in config.ENVIRONMENT_GROUPS.items()},
             "objects": list(config.OBJECTS),
             "duration_ms": config.OUTPUT_DURATION_MS,
             "scene_sounds": {k: [asdict(r) for r in v] for k, v in config.SCENE_SOUNDS.items()},

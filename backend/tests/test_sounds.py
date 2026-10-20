@@ -43,3 +43,9 @@ def test_bundled_recordings_take_priority_and_are_valid(tmp_path):
     # only sounds without a recording get synthesised
     created = sounds.ensure_assets(tmp_path)
     assert set(created) == set(config.SOUNDS) - {p.stem for p in bundled}
+
+
+def test_environment_groups_cover_every_environment_once():
+    grouped = [k for keys in config.ENVIRONMENT_GROUPS.values() for k in keys]
+    assert sorted(grouped) == sorted(config.ENVIRONMENTS)
+    assert set(config.ENVIRONMENT_TITLES) == set(config.ENVIRONMENTS)

@@ -35,3 +35,16 @@ def test_person_adds_footsteps_without_duplicates():
 def test_object_adds_new_layer():
     layers = select_layers("beach", [det("dog")])
     assert "barking" in sounds(layers)
+
+
+def test_new_environments_map_to_their_sounds():
+    assert sounds(select_layers("mountain", [])) == ["wind", "stream", "birds", "footsteps"]
+    assert sounds(select_layers("harbour", [])) == ["lapping", "seagulls", "ship_horn", "wind"]
+    assert sounds(select_layers("office", [])) == ["typing", "chatter", "phone", "clock"]
+    assert "rooster" in sounds(select_layers("countryside", []))
+
+
+def test_new_objects_add_layers():
+    assert "train" in sounds(select_layers("city", [det("train")]))
+    assert "cows" in sounds(select_layers("countryside", [det("cow")]))
+    assert "ship_horn" in sounds(select_layers("harbour", [det("boat")]))

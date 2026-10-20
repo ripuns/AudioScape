@@ -32,7 +32,8 @@ def test_health_and_config(tmp_path):
     c = client(tmp_path)
     assert c.get("/api/health").json()["status"] == "ok"
     cfg = c.get("/api/config").json()
-    assert len(cfg["environments"]) == 8
+    assert len(cfg["environments"]) == len(config.ENVIRONMENTS) >= 19
+    assert sum(len(v) for v in cfg["groups"].values()) == len(config.ENVIRONMENTS)
     assert [r["sound"] for r in cfg["scene_sounds"]["beach"]] == [
         "waves", "wind", "seagulls", "footsteps"]
 

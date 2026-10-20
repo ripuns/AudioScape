@@ -282,6 +282,11 @@ def _barking(s, r):
     return out
 
 
+def _generic(s, r):
+    """Fallback for sounds with no dedicated recipe: slowly swelling band-limited noise."""
+    return _noise(r, len(_t(s)), 200, 4000) * (0.6 + 0.4 * _cycles(s, 1))
+
+
 _RECIPES: dict[str, Callable] = {
     "waves": _waves, "wind": _wind, "insects": _insects, "leaves": _leaves,
     "traffic": _traffic, "crowd": _crowd, "rain": _rain, "chatter": _chatter,
@@ -295,7 +300,7 @@ _RECIPES: dict[str, Callable] = {
 def synthesize(sound_id: str) -> np.ndarray:
     """Return float samples in [-0.9, 0.9] for a sound id."""
     spec = config.SOUNDS[sound_id]
-    sig = _RECIPES[sound_id](spec.clip_seconds, _rng(sound_id))
+    sig = _RECIPES.get(sound_id, _generic)(spec.clip_seconds, _rng(sound_id))
     sig = np.asarray(sig, dtype=np.float64)
     sig = sig / (np.max(np.abs(sig)) + 1e-9) * 0.9
     return _fade(sig, 4) if spec.kind == "effect" else sig
