@@ -102,7 +102,7 @@ SOUNDS: dict[str, SoundSpec] = {s.id: s for s in [
     # one-shot / sparse effects
     SoundSpec("seagulls", "Seagulls", "effect", repeats=3, clip_seconds=1.6),
     SoundSpec("footsteps", "Footsteps", "effect", repeats=2, clip_seconds=2.4),
-        SoundSpec("horns", "Horns", "effect", repeats=3, clip_seconds=1.0),
+    SoundSpec("horns", "Horns", "effect", repeats=3, clip_seconds=1.0),
     SoundSpec("construction", "Construction", "effect", repeats=3, clip_seconds=1.2),
         SoundSpec("chalk", "Chalk on Board", "effect", repeats=3, clip_seconds=1.2),
     SoundSpec("cups", "Cups & Cutlery", "effect", repeats=5, clip_seconds=0.7),
