@@ -12,6 +12,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 STORAGE_DIR = BASE_DIR / "storage"
 ASSETS_DIR = STORAGE_DIR / "assets"      # generated placeholder WAVs (replaceable)
+BUNDLED_DIR = BASE_DIR / "assets" / "sounds"   # real recordings (committed); override synthesised placeholders
 OUTPUT_DIR = STORAGE_DIR / "outputs"     # rendered soundscapes
 MAX_STORED_OUTPUTS = 50
 
@@ -95,18 +96,19 @@ SOUNDS: dict[str, SoundSpec] = {s.id: s for s in [
     SoundSpec("clock", "Clock Ticking", "ambient", clip_seconds=4),
     SoundSpec("cheering", "Cheering", "ambient", clip_seconds=6),
     SoundSpec("children", "Children Playing", "ambient", clip_seconds=6),
+    SoundSpec("birds", "Birds", "ambient", clip_seconds=6),
+    SoundSpec("umbrella", "Rain on Umbrella", "ambient", clip_seconds=5),
+    SoundSpec("classroom", "Classroom Ambience", "ambient", clip_seconds=6),
     # one-shot / sparse effects
-    SoundSpec("seagulls", "Seagulls", "effect", repeats=4, clip_seconds=1.6),
-    SoundSpec("footsteps", "Footsteps", "effect", repeats=5, clip_seconds=2.4),
-    SoundSpec("birds", "Birds", "effect", repeats=6, clip_seconds=1.4),
-    SoundSpec("horns", "Horns", "effect", repeats=4, clip_seconds=1.0),
-    SoundSpec("construction", "Construction", "effect", repeats=5, clip_seconds=1.2),
-    SoundSpec("umbrella", "Umbrella", "effect", repeats=2, clip_seconds=0.8),
-    SoundSpec("chalk", "Chalk on Board", "effect", repeats=3, clip_seconds=1.2),
+    SoundSpec("seagulls", "Seagulls", "effect", repeats=3, clip_seconds=1.6),
+    SoundSpec("footsteps", "Footsteps", "effect", repeats=2, clip_seconds=2.4),
+        SoundSpec("horns", "Horns", "effect", repeats=3, clip_seconds=1.0),
+    SoundSpec("construction", "Construction", "effect", repeats=3, clip_seconds=1.2),
+        SoundSpec("chalk", "Chalk on Board", "effect", repeats=3, clip_seconds=1.2),
     SoundSpec("cups", "Cups & Cutlery", "effect", repeats=5, clip_seconds=0.7),
     SoundSpec("espresso", "Espresso Machine", "effect", repeats=2, clip_seconds=2.5),
     SoundSpec("whistle", "Whistle", "effect", repeats=2, clip_seconds=1.0),
-    SoundSpec("drums", "Drums", "effect", repeats=3, clip_seconds=2.0),
+    SoundSpec("drums", "Drums", "effect", repeats=2, clip_seconds=2.0),
     SoundSpec("barking", "Dog Barking", "effect", repeats=3, clip_seconds=0.9),
 ]}
 
@@ -126,8 +128,8 @@ SCENE_SOUNDS: dict[str, tuple[LayerRule, ...]] = {
     "city": (LayerRule("traffic", 85), LayerRule("horns", 50),
              LayerRule("crowd", 55), LayerRule("construction", 45)),
     "rainy_street": (LayerRule("rain", 90), LayerRule("traffic", 55),
-                     LayerRule("umbrella", 40), LayerRule("footsteps", 40)),
-    "classroom": (LayerRule("chatter", 60), LayerRule("chalk", 40),
+                     LayerRule("umbrella", 35), LayerRule("footsteps", 40)),
+    "classroom": (LayerRule("classroom", 70), LayerRule("chalk", 40),
                   LayerRule("clock", 35), LayerRule("footsteps", 30)),
     "cafe": (LayerRule("chatter", 60), LayerRule("cups", 45),
              LayerRule("espresso", 45), LayerRule("cafe_music", 35)),

@@ -1,8 +1,9 @@
 """Programmatic placeholder sound assets.
 
-Every sound in `config.SOUNDS` is synthesised with numpy and written as a 16-bit mono WAV
-into `ASSETS_DIR/<id>.wav`. Existing files are never overwritten, so real recordings can
-replace the placeholders by dropping a WAV with the same name — no code changes needed.
+Sounds without a real recording in `backend/assets/sounds/` are synthesised with numpy and
+written as 16-bit mono WAV into `ASSETS_DIR/<id>.wav` (never overwritten). Real recordings
+(see tools/fetch_sounds.py) take priority — drop a WAV named `<id>.wav` into the bundled
+folder to replace any sound, no code changes needed.
 Ambient beds are synthesised to loop seamlessly (modulation uses whole cycles per clip).
 """
 from __future__ import annotations
@@ -284,7 +285,7 @@ def _barking(s, r):
 _RECIPES: dict[str, Callable] = {
     "waves": _waves, "wind": _wind, "insects": _insects, "leaves": _leaves,
     "traffic": _traffic, "crowd": _crowd, "rain": _rain, "chatter": _chatter,
-    "cafe_music": _cafe_music, "clock": _clock, "cheering": _cheering, "children": _children,
+    "cafe_music": _cafe_music, "clock": _clock, "classroom": _chatter, "cheering": _cheering, "children": _children,
     "seagulls": _seagulls, "footsteps": _footsteps, "birds": _birds, "horns": _horns,
     "construction": _construction, "umbrella": _umbrella, "chalk": _chalk, "cups": _cups,
     "espresso": _espresso, "whistle": _whistle, "drums": _drums, "barking": _barking,
@@ -309,17 +310,24 @@ def write_wav(path: Path, samples: np.ndarray) -> None:
         w.writeframes(pcm.tobytes())
 
 
-def asset_path(sound_id: str, assets_dir: Path | None = None) -> Path:
+def asset_path(sound_id: str, assets_dir: Path | None = None, use_bundled: bool = True) -> Path:
+    """Path of a sound's WAV. A real recording in BUNDLED_DIR (backend/assets/sounds) takes
+    priority over the synthesised placeholder in `assets_dir`."""
+    if use_bundled:
+        bundled = config.BUNDLED_DIR / f"{sound_id}.wav"
+        if bundled.exists():
+            return bundled
     return (assets_dir or config.ASSETS_DIR) / f"{sound_id}.wav"
 
 
-def ensure_assets(assets_dir: Path | None = None) -> list[str]:
-    """Generate any missing placeholder WAVs. Returns ids that were created."""
+def ensure_assets(assets_dir: Path | None = None, use_bundled: bool = True) -> list[str]:
+    """Synthesise a placeholder WAV for every sound that has neither a bundled recording nor an
+    existing file. Existing files are never overwritten. Returns the ids that were created."""
     d = assets_dir or config.ASSETS_DIR
     d.mkdir(parents=True, exist_ok=True)
     created = []
     for sid in config.SOUNDS:
-        p = asset_path(sid, d)
+        p = asset_path(sid, d, use_bundled)
         if not p.exists():
             write_wav(p, synthesize(sid))
             created.append(sid)

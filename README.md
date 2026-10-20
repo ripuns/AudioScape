@@ -41,9 +41,18 @@ each sound can be muted or rebalanced (stems sum to the mix).
 **Playback** — Web Audio API player with play/pause/seek, a clickable waveform of the final mix,
 a live frequency/waveform visualizer, per-layer controls and WAV download.
 
-**Assets** — all sounds are placeholder WAVs synthesised at startup into
-`backend/storage/assets/`. To use real recordings, drop a WAV with the same file name
-(e.g. `waves.wav`) into that folder; existing files are never overwritten.
+**Assets** — real recordings (Wikimedia Commons: CC0 / public domain / CC BY / CC BY-SA) are
+bundled in [backend/assets/sounds/](backend/assets/sounds/) — see
+[CREDITS.md](backend/assets/sounds/CREDITS.md) for authors and licences. Sounds without a
+recording (rain, clock, cups) fall back to programmatic placeholder WAVs generated into
+`backend/storage/assets/`. To swap any sound, drop a WAV named `<sound id>.wav` (e.g. `waves.wav`)
+into `backend/assets/sounds/` — no code changes needed. Two tools help:
+- `python tools/fetch_sounds.py [ids...]` — re-download and convert the bundled recordings
+  (FFmpeg via `imageio-ffmpeg`; crossfades ambient beds into seamless loops, level-matches).
+- `python tools/audit_sounds.py [dir|--synth]` — scores every sound with an AudioSet classifier
+  (Audio Spectrogram Transformer) to check it is recognised as the right thing. The first
+  synthetic placeholders scored near zero for most sounds (crowd/chatter/cheering/children read as
+  "rain on surface"/"static"); the real recordings score 0.4–0.9 for 19 of 22 audited sounds.
 
 ## Stack
 - Frontend: React + Vite + Web Audio API

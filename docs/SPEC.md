@@ -73,8 +73,9 @@ Beach, Forest, Classroom, City, Cafe, Stadium, Park, Rainy Street.
 | Rainy Street | Rain + Traffic + Umbrella + Footsteps |
 
 Classroom, Cafe, Stadium and Park mappings are not given in the deck; they are defined in
-`config.py` in the same style. Initial sounds are generated placeholder WAVs; real assets can
-replace them without architectural changes.
+`config.py` in the same style. Sounds started as generated placeholder WAVs; real recordings
+(`backend/assets/sounds/`) now replace most of them without architectural changes, exactly as
+the deck anticipates.
 
 ## 8. Visual information → audio
 Detected scene & objects → mapping engine → selected sound layers.

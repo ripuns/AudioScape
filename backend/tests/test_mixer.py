@@ -44,11 +44,11 @@ def test_ambient_loops_and_effects_repeat_sparingly(tmp_path):
     sounds.ensure_assets(tmp_path)
     rain = _load("rain", tmp_path)
     assert len(loop_to_duration(rain, 30_000)) == 30_000
-    clip = _load("footsteps", tmp_path)
-    out = place_effect(clip, 5, 30_000, seed=1)
+    clip = _load("horns", tmp_path)
+    out = place_effect(clip, 4, 30_000, seed=1)
     assert len(out) == 30 * config.SAMPLE_RATE
     active = np.abs(out) > 1e-4
-    # five hits, so some but far from all of the timeline is active
+    # four hits, so some but far from all of the timeline is active
     assert 0.02 < active.mean() < 0.5
     # deterministic
-    assert np.array_equal(out, place_effect(clip, 5, 30_000, seed=1))
+    assert np.array_equal(out, place_effect(clip, 4, 30_000, seed=1))
