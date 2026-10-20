@@ -77,6 +77,10 @@ Classroom, Cafe, Stadium and Park mappings are not given in the deck; they are d
 (`backend/assets/sounds/`) now replace most of them without architectural changes, exactly as
 the deck anticipates.
 
+**Extension beyond the deck:** the deck fixes scope at 8 environments. The system now supports 19
+(adds Mountain, Lake, Countryside, Market, Railway Station, Highway, Kitchen, Library, Office,
+Harbour, Place of Worship) by configuration only, exactly because mappings are centralised.
+
 ## 8. Visual information → audio
 Detected scene & objects → mapping engine → selected sound layers.
 - Mappings live centrally in configuration (`config.py`), not hard-coded across the app.

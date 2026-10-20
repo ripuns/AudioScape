@@ -26,6 +26,10 @@ const P = {
   umbrella: 'M12 3a9 9 0 0 0-9 9h18a9 9 0 0 0-9-9Zm0 9v6.5a2 2 0 0 0 4 0',
   mic: 'M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm-6-3a6 6 0 0 0 12 0m-6 6v3',
   leaf: 'M5 19C5 10 10 5 20 4c0 10-5 15-14 15Zm0 0 8-8',
+  book: 'M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Zm2 14h13M8 7h7',
+  keyboard: 'M3 7h18v10H3V7Zm3 3h.01M9 10h.01M12 10h.01M15 10h.01M18 10h.01M7 14h10',
+  phone: 'M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z',
+  bell: 'M6 16v-5a6 6 0 1 1 12 0v5l2 2H4l2-2Zm4 4a2 2 0 0 0 4 0',
   sparkle: 'M12 3v4m0 10v4M3 12h4m10 0h4M6 6l2.5 2.5m7 7L18 18M18 6l-2.5 2.5m-7 7L6 18',
 }
 
@@ -45,6 +49,9 @@ const SOUND_ICON = {
   cheering: 'people', children: 'people', classroom: 'people', rain: 'rain', umbrella: 'umbrella',
   cafe_music: 'music', drums: 'music', footsteps: 'steps', barking: 'paw', clock: 'clock',
   whistle: 'whistle', cups: 'cup', espresso: 'cup', chalk: 'tool',
+  stream: 'wave', lapping: 'wave', frogs: 'paw', rooster: 'bird', cows: 'paw', train: 'car',
+  station: 'people', market: 'people', highway: 'car', kitchen: 'cup', tap: 'rain', library: 'book',
+  typing: 'keyboard', phone: 'phone', ship_horn: 'whistle', bells: 'bell', chant: 'music',
 }
 export const soundIcon = (id) => SOUND_ICON[id] || 'wave'
 

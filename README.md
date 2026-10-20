@@ -19,10 +19,13 @@ Image Upload → Visual Understanding → Sound Mapping → Audio Mixing → Int
 ```
 
 **Visual understanding (CLIP zero-shot, `openai/clip-vit-base-patch32`)**
-- *Scene classification* — the full image is scored against the 8 environment prompts
-  (Beach, Forest, Classroom, City, Cafe, Stadium, Park, Rainy Street).
+- *Scene classification* — the full image is scored against the environment prompts. 19 are
+  supported, in four groups: **Nature** (Beach, Forest, Park, Mountain, Lake, Countryside),
+  **Urban** (City, Rainy Street, Market, Railway Station, Highway), **Home & indoor** (Classroom,
+  Cafe, Kitchen, Library, Office) and **Other** (Stadium, Harbour, Place of Worship). The deck's
+  original eight are included; the rest extend it, and adding more is a config-only change.
 - *Tiled object detection* — the image is split into overlapping tiles (3×3 half-size tiles);
-  each tile is scored against object prompts (person, bird, car, dog, umbrella, crowd) plus
+  each tile is scored against object prompts (person, bird, car, dog, umbrella, crowd, boat, train, cow) plus
   background prompts. Tiles above the threshold keep normalized coordinates and adjacent
   same-label tiles are merged. Boxes are coarse — this is not YOLO/COCO-precise, and no second
   detection model is used.
@@ -49,6 +52,9 @@ recording (rain, clock, cups) fall back to programmatic placeholder WAVs generat
 into `backend/assets/sounds/` — no code changes needed. Two tools help:
 - `python tools/fetch_sounds.py [ids...]` — re-download and convert the bundled recordings
   (FFmpeg via `imageio-ffmpeg`; crossfades ambient beds into seamless loops, level-matches).
+- `python tools/eval_scenes.py [n]` — downloads real Commons photos for every environment and reports
+  scene-classification accuracy and confusions (about 75% top-1 / 87% top-3 over 19 scenes on
+  auto-sourced, noisy photos; most errors are look-alikes such as lake vs. mountain or city vs. highway).
 - `python tools/audit_sounds.py [dir|--synth]` — scores every sound with an AudioSet classifier
   (Audio Spectrogram Transformer) to check it is recognised as the right thing. The first
   synthetic placeholders scored near zero for most sounds (crowd/chatter/cheering/children read as
