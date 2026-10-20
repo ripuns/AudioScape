@@ -10,3 +10,6 @@ dist/
 
 # generated at runtime
 backend/storage/
+
+# licence-free test photos downloaded by backend/tools/fetch_test_images.py
+backend/test_images/
