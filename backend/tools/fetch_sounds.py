@@ -59,6 +59,23 @@ MANIFEST = [
     ("drums", "drum kit", "Drum beat.ogg", None, 0, 8, "effect"),
     ("chalk", "chalk blackboard", "Chalkboard-writing", None, 4, 6, "effect"),
     ("espresso", "espresso", "Espresso machine.ogg", None, 2, 10, "effect"),
+    ("stream", "stream water", "433589 jackthemurray", None, 5, 25, "ambient"),
+    ("lapping", "lake", "Escucha desde la orilla", None, 0, 30, "ambient"),
+    ("frogs", "frogs", "Chorus of Frogs", None, 0, 24, "ambient"),
+    ("rooster", "rooster", "Small rooster crowing", None, 0, 6, "effect"),
+    ("cows", "cattle", "Single Cow Moo", None, 0, 3.5, "effect"),
+    ("train", "train arriving", "Tielingxi", None, 0, 20, "effect"),
+    ("station", "city ambience", "TheStationTunnelOfTheTampereStation", None, 5, 28, "ambient"),
+    ("market", "market", "Pantami Market", None, 30, 28, "ambient"),
+    ("highway", "road traffic", "De una calle tranquila a una avenida", None, 60, 28, "ambient"),
+    ("kitchen", "kitchen", "Kitchen sounds recorded while cooking", None, 20, 28, "ambient"),
+    ("tap", "kitchen", "Kitchen sink draining", None, 0, 28, "ambient"),
+    ("library", "library", "Biblioteca", None, 5, 28, "ambient"),
+    ("typing", "typing keyboard", "Keyboard noise", None, 0, 22, "ambient"),
+    ("phone", "telephone ringing", "Model 500 Telephone", None, 0, 8, "effect"),
+    ("ship_horn", "ship horn", "Cruise ship Albatros", None, 0, 6, "effect"),
+    ("bells", "church bell", "Samariter Church Bell I (Es).ogg", None, 0, 14, "effect"),
+    ("chant", "gregorian chant", "Veni.sancte.spiritus", None, 5, 28, "ambient"),
 ]
 
 

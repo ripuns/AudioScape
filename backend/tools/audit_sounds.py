@@ -48,6 +48,23 @@ EXPECTED: dict[str, list[str]] = {
     "whistle": ["Whistle", "Whistling", "Referee whistle"],
     "drums": ["Drum", "Snare drum", "Drum kit", "Bass drum", "Percussion"],
     "barking": ["Dog", "Bark", "Animal", "Domestic animals, pets"],
+    "stream": ["Stream", "Water", "Trickle, dribble", "Gurgling", "Liquid"],
+    "lapping": ["Water", "Waves, surf", "Ocean", "Slosh", "Splash, splatter", "Boat, Water vehicle", "Stream"],
+    "frogs": ["Frog", "Croak", "Animal", "Insect"],
+    "rooster": ["Rooster", "Crowing, cock-a-doodle-doo", "Chicken, rooster", "Fowl"],
+    "cows": ["Cattle, bovinae", "Moo", "Livestock, farm animals, working animals", "Animal"],
+    "train": ["Train", "Rail transport", "Railroad car, train wagon", "Train horn", "Vehicle"],
+    "station": ["Inside, public space", "Hubbub, speech noise, speech babble", "Speech", "Train", "Rail transport", "Echo"],
+    "market": ["Hubbub, speech noise, speech babble", "Speech", "Crowd", "Inside, public space", "Outside, urban or manmade"],
+    "highway": ["Traffic noise, roadway noise", "Vehicle", "Car", "Motor vehicle (road)", "Truck"],
+    "kitchen": ["Dishes, pots, and pans", "Cutlery, silverware", "Frying (food)", "Water tap, faucet", "Sink (filling or washing)", "Speech", "Inside, small room"],
+    "library": ["Inside, small room", "Inside, large room or hall", "Silence", "Speech", "Hubbub, speech noise, speech babble", "Inside, public space"],
+    "tap": ["Water", "Liquid", "Fill (with liquid)", "Water tap, faucet", "Sink (filling or washing)", "Drip"],
+    "typing": ["Typing", "Computer keyboard", "Typewriter", "Typewriter", "Tap"],
+    "phone": ["Telephone bell ringing", "Ringtone", "Telephone", "Alarm"],
+    "ship_horn": ["Foghorn", "Ship", "Boat, Water vehicle", "Vehicle horn, car horn, honking", "Air horn, truck horn"],
+    "bells": ["Bell", "Church bell", "Chime", "Ding", "Tubular bells", "Gong"],
+    "chant": ["Chant", "Choir", "Singing", "Male singing", "Music", "Mantra"],
 }
 
 
