@@ -27,25 +27,25 @@ OBJECT_PROMPT = "a photo of a {}"
 # Supported environments (8): key -> text used in the CLIP prompt
 ENVIRONMENTS: dict[str, str] = {
     "beach": "beach",
-    "forest": "forest",
+    "forest": "forest with tall trees",
     "classroom": "classroom",
     "city": "busy city street",
     "cafe": "cafe",
     "stadium": "stadium",
     "park": "park",
-    "rainy_street": "rainy street",
+    "rainy_street": "street in the rain with wet pavement",
     # nature
     "mountain": "mountain landscape",
-    "lake": "lake",
+    "lake": "lake with calm water",
     "countryside": "countryside farmland",
     # urban
     "market": "busy outdoor market",
     "railway_station": "railway station",
-    "highway": "highway with traffic",
+    "highway": "multi-lane highway road with cars",
     # home & indoor
     "kitchen": "kitchen",
-    "library": "library",
-    "office": "office",
+    "library": "library with bookshelves",
+    "office": "office with desks and computers",
     # other
     "harbour": "harbour with boats",
     "worship": "church or temple",
